@@ -5,6 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wings Media | SEO Tracking Sistem</title>
   <style>
+ codex/create-interactive-seo-tracking-system-8wf0or
+    :root { --bg:#0f1117; --card:#171a24; --card-2:#1d2230; --text:#e7ecff; --muted:#9aa4c7; --accent:#4f7cff; --ok:#21c56b; --bad:#f25f6b; --warn:#f6c453; --border:#2a3145; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Inter,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
+    .container { max-width:1220px; margin:0 auto; padding:20px; }
+    .header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; }
+    h1 { margin:0; font-size:1.6rem; } .subtitle { color:var(--muted); font-size:.95rem; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 22px; }
+    .tab { border:1px solid var(--border); background:var(--card); color:var(--text); padding:10px 14px; border-radius:10px; cursor:pointer; }
+    .tab.active { background:var(--accent); border-color:var(--accent); }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px; margin-bottom:16px; }
+    .grid { display:grid; gap:14px; } .grid.cols-2 { grid-template-columns:repeat(2,minmax(0,1fr)); } .grid.cols-3 { grid-template-columns:repeat(3,minmax(0,1fr)); } .grid.cols-4 { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    @media (max-width:900px){ .grid.cols-2,.grid.cols-3,.grid.cols-4{ grid-template-columns:1fr; } }
+    .hidden{display:none;} .section-title{margin:0 0 10px; font-size:1.15rem;}
+    .progress-wrap{margin:8px 0 12px;} .progress-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem;margin-bottom:6px;}
+    .progress{background:#121623;border:1px solid var(--border);border-radius:999px;height:10px;overflow:hidden;} .progress>div{height:100%;background:linear-gradient(90deg,var(--accent),#6ea0ff);width:0;}
+    .task{border:1px solid var(--border);background:var(--card-2);border-radius:10px;padding:10px;margin-bottom:8px;cursor:pointer;} .task.done{background:#123324;border-color:#1f7d4b;} .task h4{margin:0 0 4px;font-size:.98rem;} .task p{margin:0;color:var(--muted);font-size:.88rem;} .tool{margin-top:4px;display:inline-block;font-size:.8rem;color:#b9c8ff;}
+    table{width:100%;border-collapse:collapse;} th,td{border-bottom:1px solid var(--border);padding:10px 8px;text-align:left;font-size:.92rem;} th{color:#c7d5ff;font-weight:600;}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:.75rem;font-weight:700;} .badge.top{background:#1f3f89;color:#d7e4ff;} .trend-up{color:var(--ok);font-weight:700;} .trend-down{color:var(--bad);font-weight:700;} .trend-flat{color:var(--warn);font-weight:700;}
+    .stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;} @media (max-width:900px){.stats{grid-template-columns:1fr 1fr;}}
+    .stat{background:var(--card-2);border:1px solid var(--border);border-radius:10px;padding:10px;} .stat .label{color:var(--muted);font-size:.82rem;} .stat .value{font-size:1.1rem;font-weight:700;margin-top:4px;}
+    input,textarea,select,button{width:100%;border:1px solid var(--border);background:#121623;color:var(--text);border-radius:10px;padding:10px;} textarea{min-height:100px;resize:vertical;} button{background:var(--accent);border-color:var(--accent);cursor:pointer;font-weight:600;} .btn-secondary{background:transparent;border-color:var(--border);}
+    .notes-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;} @media (max-width:900px){.notes-grid{grid-template-columns:1fr;}} .note{background:var(--card-2);border:1px solid var(--border);border-radius:10px;padding:10px;} .note-head{display:flex;justify-content:space-between;gap:8px;}
+    .shop-chip { display:inline-block; padding:3px 8px; border-radius:999px; background:#24304d; color:#d5e2ff; font-size:.73rem; margin-left:6px; }
+    .api-help { color: var(--muted); font-size: .85rem; margin-top: 6px; }
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;} .modal.show{display:flex;} .modal-content{width:min(480px,100%);background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;} .modal-actions{display:flex;gap:8px;margin-top:12px;}
+
     :root {
       --bg: #0f1117;
       --card: #171a24;
@@ -119,378 +146,11 @@
       border-radius: 12px; padding: 16px;
     }
     .modal-actions { display: flex; gap: 8px; margin-top: 12px; }
+ main
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <div>
-        <h1>Wings Media SEO Tracking Sistem</h1>
-        <div class="subtitle" id="monthLabel"></div>
-      </div>
-      <button id="resetMonthBtn" style="max-width:220px">Resetuj mjesec</button>
-    </div>
-
-    <div class="tabs">
-      <button class="tab active" data-tab="checklist">Checklist</button>
-      <button class="tab" data-tab="keywords">Ključne riječi</button>
-      <button class="tab" data-tab="report">Izvještaj</button>
-      <button class="tab" data-tab="notes">Bilješke</button>
-    </div>
-
-    <section id="checklist" class="tab-content"></section>
-    <section id="keywords" class="tab-content hidden"></section>
-    <section id="report" class="tab-content hidden"></section>
-    <section id="notes" class="tab-content hidden"></section>
-  </div>
-
-  <div class="modal" id="resetModal">
-    <div class="modal-content">
-      <h3>Potvrda resetovanja</h3>
-      <p>Da li ste sigurni da želite resetovati mjesec? Checklist će biti očišćen, a "ovaj mj." pozicije će postati "prošli mj.".</p>
-      <div class="modal-actions">
-        <button id="confirmReset">Da, resetuj</button>
-        <button class="btn-secondary" id="cancelReset">Odustani</button>
-      </div>
-    </div>
-  </div>
-
-<script>
-(() => {
-  const STORAGE_KEY = 'wings-seo-tracker-v1';
-  const monthNames = ['Januar','Februar','Mart','April','Maj','Juni','Juli','August','Septembar','Oktobar','Novembar','Decembar'];
-
-  const defaultData = {
-    period: { month: new Date().getMonth(), year: new Date().getFullYear() },
-    checklist: {
-      'Tehnički SEO': [
-        ['Core Web Vitals','Provjeriti LCP/INP/CLS metrike i prioritetne URL-ove.','PageSpeed Insights'],
-        ['Crawl errors','Pregledati greške indeksiranja i 404 URL-ove.','Google Search Console'],
-        ['Sitemap','Potvrditi ažurnost XML sitemap fajla.','Search Console'],
-        ['robots.txt','Provjeriti blokirane sekcije i pravila crawlanja.','Robots Tester'],
-        ['Mobile test','Testirati mobilnu upotrebljivost ključnih stranica.','Mobile-Friendly Test'],
-        ['HTTPS','Verifikovati SSL certifikat i mixed content.','SSL Labs'],
-        ['Broken links','Skenirati interne i eksterne neispravne linkove.','Screaming Frog'],
-        ['Schema markup','Validirati strukturirane podatke.','Rich Results Test']
-      ],
-      'On-Page SEO': [
-        ['Title tagovi','Ažurirati title tagove prema ciljanim KW.','Screaming Frog'],
-        ['Meta opisi','Unaprijediti CTR kroz jasne meta opise.','Search Console'],
-        ['H1-H3 struktura','Provjeriti hijerarhiju naslova na glavnim landing stranicama.','Ahrefs Audit'],
-        ['Blog post','Objaviti minimalno jedan SEO optimizovan blog.','WordPress'],
-        ['Keyword density','Pregledati raspored ključnih riječi bez over-optimizacije.','Surfer SEO'],
-        ['Interni linking','Dodati relevantne interne linkove između servisa i bloga.','Screaming Frog'],
-        ['Slike','Optimizovati ALT tekst i kompresiju slika.','TinyPNG'],
-        ['URL struktura','Potvrditi čitljive i konzistentne URL-ove.','Manual Review']
-      ],
-      'Link Building': [
-        ['Backlink analiza','Pregled novih i izgubljenih backlinkova.','Ahrefs'],
-        ['Competitor gap','Identifikovati domene koje linkaju konkurenciji.','SEMrush'],
-        ['Outreach','Poslati outreach email kampanju.','Hunter + Gmail'],
-        ['Directory submission','Dodati/azurirati profile u relevantnim direktorijima.','Clutch/Sortlist'],
-        ['Gost postovi','Dogovoriti i poslati barem 1 gostujući članak.','Manual Outreach'],
-        ['Disavow','Pregledati sumnjive linkove za disavow listu.','Search Console']
-      ],
-      'Analitika': [
-        ['GA4 pregled','Provjeriti trend sesija, engagement i konverzija.','Google Analytics 4'],
-        ['Search Console','Analizirati CTR, pozicije i upite.','Search Console'],
-        ['Ranking report','Ažurirati ranking tabelu za prioritetne KW.','SEMrush'],
-        ['Competitor monitoring','Uporediti vidljivost sa 2-3 konkurenta.','Ahrefs'],
-        ['Izvještaj klijentu','Pripremiti sažetak performansi i akcija.','Interni Template'],
-        ['Ciljevi','Revidirati KPI ciljeve za naredni period.','GA4 + CRM']
-      ]
-    },
-    completedTasks: {},
-    keywords: [
-      { kw:'web dizajn Sarajevo', device:'Desktop', prev:14, curr:9 },
-      { kw:'seo optimizacija sarajevo', device:'Mobile', prev:12, curr:10 },
-      { kw:'digitalna agencija sarajevo', device:'Desktop', prev:8, curr:7 },
-      { kw:'google ads agencija bih', device:'Mobile', prev:19, curr:15 },
-      { kw:'izrada web stranica bih', device:'Desktop', prev:11, curr:13 },
-      { kw:'marketing agencija sarajevo', device:'Mobile', prev:17, curr:12 },
-      { kw:'seo audit bih', device:'Desktop', prev:22, curr:18 },
-      { kw:'content marketing bih', device:'Mobile', prev:16, curr:16 }
-    ],
-    notes: [],
-    report: {
-      client: 'Wings Media',
-      period: '',
-      visitorsPrev: '', visitorsCurr: '', impressions: '', clicks: '',
-      keyWorks: '', plan: '', recommendation: ''
-    }
-  };
-
-  let state = load();
-  function load(){
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(!raw) return structuredClone(defaultData);
-    try { return { ...structuredClone(defaultData), ...JSON.parse(raw) }; }
-    catch { return structuredClone(defaultData); }
-  }
-  function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-
-  const el = id => document.getElementById(id);
-  const monthLabel = el('monthLabel');
-
-  function currentMonthText(){ return `${monthNames[state.period.month]} ${state.period.year}`; }
-
-  function renderTabs(){
-    document.querySelectorAll('.tab').forEach(btn => {
-      btn.onclick = () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(s => s.classList.add('hidden'));
-        btn.classList.add('active');
-        el(btn.dataset.tab).classList.remove('hidden');
-      };
-    });
-  }
-
-  function taskId(category, idx){ return `${category}__${idx}`; }
-
-  function renderChecklist(){
-    const root = el('checklist');
-    let total = 0, done = 0;
-    root.innerHTML = '';
-
-    Object.entries(state.checklist).forEach(([category, tasks]) => {
-      let cDone = 0;
-      const card = document.createElement('div');
-      card.className = 'card';
-
-      const tasksHtml = tasks.map((t,i) => {
-        const id = taskId(category,i);
-        const isDone = !!state.completedTasks[id];
-        if(isDone) cDone++;
-        return `<div class="task ${isDone?'done':''}" data-id="${id}">
-          <h4>${t[0]}</h4>
-          <p>${t[1]}</p>
-          <span class="tool">Alat: ${t[2]}</span>
-        </div>`;
-      }).join('');
-
-      total += tasks.length; done += cDone;
-      const pct = Math.round((cDone / tasks.length) * 100);
-
-      card.innerHTML = `
-        <h3 class="section-title">${category}</h3>
-        <div class="progress-wrap">
-          <div class="progress-meta"><span>Napredak kategorije</span><span>${pct}% (${cDone}/${tasks.length})</span></div>
-          <div class="progress"><div style="width:${pct}%"></div></div>
-        </div>
-        ${tasksHtml}
-      `;
-      root.appendChild(card);
-    });
-
-    const overall = Math.round((done / total) * 100);
-    const summary = document.createElement('div');
-    summary.className = 'card';
-    summary.innerHTML = `<h3 class="section-title">Ukupna završenost</h3>
-      <div class="progress-meta"><span>Ukupno</span><span>${overall}% (${done}/${total})</span></div>
-      <div class="progress"><div style="width:${overall}%"></div></div>`;
-    root.prepend(summary);
-
-    root.querySelectorAll('.task').forEach(t => {
-      t.onclick = () => {
-        const id = t.dataset.id;
-        state.completedTasks[id] = !state.completedTasks[id];
-        if(!state.completedTasks[id]) delete state.completedTasks[id];
-        save(); renderChecklist();
-      };
-    });
-  }
-
-  function getKWStats(){
-    const total = state.keywords.length;
-    let top10=0, improved=0, declined=0, sum=0;
-    state.keywords.forEach(k => {
-      if(k.curr <= 10) top10++;
-      if(k.curr < k.prev) improved++;
-      if(k.curr > k.prev) declined++;
-      sum += Number(k.curr || 0);
-    });
-    return { total, top10, improved, declined, avg: total ? (sum/total).toFixed(1) : '0.0' };
-  }
-
-  function renderKeywords(){
-    const root = el('keywords');
-    const stats = getKWStats();
-
-    root.innerHTML = `
-      <div class="card">
-        <h3 class="section-title">Statistike ključnih riječi</h3>
-        <div class="stats">
-          <div class="stat"><div class="label">Ukupno KW</div><div class="value">${stats.total}</div></div>
-          <div class="stat"><div class="label">Top 10</div><div class="value">${stats.top10}</div></div>
-          <div class="stat"><div class="label">Poboljšano</div><div class="value">${stats.improved}</div></div>
-          <div class="stat"><div class="label">Palo</div><div class="value">${stats.declined}</div></div>
-          <div class="stat"><div class="label">Avg pozicija</div><div class="value">${stats.avg}</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3 class="section-title">Tracker ključnih riječi</h3>
-        <table>
-          <thead><tr><th>KW</th><th>Uređaj</th><th>Prošli mj.</th><th>Ovaj mj.</th><th>Promjena</th><th>Status</th></tr></thead>
-          <tbody>
-            ${state.keywords.map((k, i) => {
-              const diff = k.prev - k.curr;
-              const trend = diff > 0 ? `<span class='trend-up'>▲ +${diff}</span>` : diff < 0 ? `<span class='trend-down'>▼ ${diff}</span>` : `<span class='trend-flat'>● 0</span>`;
-              return `<tr>
-                <td>${k.kw} ${k.curr <= 10 ? '<span class="badge top">Top 10</span>' : ''}</td>
-                <td>${k.device}</td>
-                <td>${k.prev}</td>
-                <td>${k.curr}</td>
-                <td>${trend}</td>
-                <td>${k.curr < k.prev ? 'Poboljšano' : k.curr > k.prev ? 'Palo' : 'Stabilno'}</td>
-              </tr>`;
-            }).join('')}
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <h3 class="section-title">Dodaj novu ključnu riječ</h3>
-        <div class="grid cols-4">
-          <input id="kwInput" placeholder="Ključna riječ" />
-          <select id="kwDevice"><option>Desktop</option><option>Mobile</option></select>
-          <input id="kwPrev" type="number" min="1" placeholder="Prošli mj." />
-          <input id="kwCurr" type="number" min="1" placeholder="Ovaj mj." />
-        </div>
-        <div style="margin-top:10px"><button id="addKw">Dodaj KW</button></div>
-      </div>
-    `;
-
-    el('addKw').onclick = () => {
-      const kw = el('kwInput').value.trim();
-      const device = el('kwDevice').value;
-      const prev = Number(el('kwPrev').value);
-      const curr = Number(el('kwCurr').value);
-      if(!kw || !prev || !curr) return alert('Unesite sve podatke za novu KW.');
-      state.keywords.push({ kw, device, prev, curr });
-      save(); renderKeywords();
-    };
-  }
-
-  function generateReportText(){
-    const r = state.report;
-    const stats = getKWStats();
-    const top = state.keywords.filter(k => k.curr <= 10).map(k => `${k.kw} (#${k.curr})`).join(', ') || 'Nema KW u Top 10.';
-    return `SEO mjesečni izvještaj\nKlijent: ${r.client || '—'}\nPeriod: ${r.period || currentMonthText()}\n\nSaobraćaj:\n- Organski posjetioci (prošli mjesec): ${r.visitorsPrev || '—'}\n- Organski posjetioci (ovaj mjesec): ${r.visitorsCurr || '—'}\n- Impresije: ${r.impressions || '—'}\n- Klikovi: ${r.clicks || '—'}\n\nKljučne riječi:\n- Ukupno KW: ${stats.total}\n- Top 10: ${stats.top10}\n- Poboljšano: ${stats.improved}\n- Palo: ${stats.declined}\n- Prosječna pozicija: ${stats.avg}\n- Top KW: ${top}\n\nKljučni radovi:\n${r.keyWorks || '—'}\n\nPlan za naredni period:\n${r.plan || '—'}\n\nPreporuka:\n${r.recommendation || '—'}\n\nPripremio: Wings Media SEO tim`;
-  }
-
-  function renderReport(){
-    const root = el('report');
-    const r = state.report;
-    root.innerHTML = `
-      <div class="card">
-        <h3 class="section-title">Generator izvještaja</h3>
-        <div class="grid cols-2">
-          <input id="rClient" placeholder="Klijent" value="${r.client || ''}" />
-          <input id="rPeriod" placeholder="Period (npr. April 2026)" value="${r.period || ''}" />
-          <input id="rVisitorsPrev" placeholder="Organski posjetioci prošli mj." value="${r.visitorsPrev || ''}" />
-          <input id="rVisitorsCurr" placeholder="Organski posjetioci ovaj mj." value="${r.visitorsCurr || ''}" />
-          <input id="rImpressions" placeholder="Impresije" value="${r.impressions || ''}" />
-          <input id="rClicks" placeholder="Klikovi" value="${r.clicks || ''}" />
-        </div>
-        <div style="margin-top:10px" class="grid">
-          <textarea id="rKeyWorks" placeholder="Ključni radovi">${r.keyWorks || ''}</textarea>
-          <textarea id="rPlan" placeholder="Plan">${r.plan || ''}</textarea>
-          <textarea id="rRecommendation" placeholder="Preporuka">${r.recommendation || ''}</textarea>
-        </div>
-        <div style="margin-top:10px" class="grid cols-2">
-          <button id="genReport">Generiši izvještaj</button>
-          <button class="btn-secondary" id="copyReport">Kopiraj tekst</button>
-        </div>
-      </div>
-      <div class="card">
-        <h3 class="section-title">Generisani tekst</h3>
-        <textarea id="reportOutput" readonly>${generateReportText()}</textarea>
-      </div>
-    `;
-
-    const sync = () => {
-      state.report = {
-        client: el('rClient').value, period: el('rPeriod').value,
-        visitorsPrev: el('rVisitorsPrev').value, visitorsCurr: el('rVisitorsCurr').value,
-        impressions: el('rImpressions').value, clicks: el('rClicks').value,
-        keyWorks: el('rKeyWorks').value, plan: el('rPlan').value, recommendation: el('rRecommendation').value
-      };
-      save();
-    };
-    ['rClient','rPeriod','rVisitorsPrev','rVisitorsCurr','rImpressions','rClicks','rKeyWorks','rPlan','rRecommendation']
-      .forEach(id => el(id).addEventListener('input', sync));
-
-    el('genReport').onclick = () => { sync(); el('reportOutput').value = generateReportText(); };
-    el('copyReport').onclick = async () => {
-      const txt = el('reportOutput').value;
-      try { await navigator.clipboard.writeText(txt); alert('Tekst kopiran.'); }
-      catch { alert('Kopiranje nije dostupno u ovom browseru.'); }
-    };
-  }
-
-  function renderNotes(){
-    const root = el('notes');
-    root.innerHTML = `
-      <div class="card">
-        <h3 class="section-title">Bilješke</h3>
-        <div class="grid cols-2">
-          <input id="noteTitle" placeholder="Naslov bilješke" />
-          <button id="addNote">Dodaj bilješku</button>
-        </div>
-      </div>
-      <div class="notes-grid" id="notesGrid"></div>
-    `;
-
-    const renderCards = () => {
-      const ng = el('notesGrid');
-      ng.innerHTML = state.notes.map((n, i) => `
-        <div class="note">
-          <div class="note-head">
-            <strong>${n.title || 'Bez naslova'}</strong>
-            <button class="btn-secondary" data-del="${i}" style="max-width:80px">Obriši</button>
-          </div>
-          <textarea data-note="${i}">${n.text || ''}</textarea>
-        </div>`).join('');
-
-      ng.querySelectorAll('[data-del]').forEach(b => b.onclick = () => {
-        state.notes.splice(Number(b.dataset.del),1); save(); renderCards();
-      });
-      ng.querySelectorAll('[data-note]').forEach(t => t.oninput = () => {
-        state.notes[Number(t.dataset.note)].text = t.value; save();
-      });
-    };
-
-    el('addNote').onclick = () => {
-      const title = el('noteTitle').value.trim();
-      state.notes.unshift({ title, text: '' });
-      el('noteTitle').value = '';
-      save(); renderCards();
-    };
-
-    renderCards();
-  }
-
-  function resetMonth(){
-    Object.keys(state.completedTasks).forEach(k => delete state.completedTasks[k]);
-    state.keywords = state.keywords.map(k => ({ ...k, prev: k.curr }));
-    state.period.month++;
-    if(state.period.month > 11){ state.period.month = 0; state.period.year++; }
-    if(!state.report.period) state.report.period = `${monthNames[state.period.month]} ${state.period.year}`;
-    save();
-    initRender();
-  }
-
-  function initRender(){
-    monthLabel.textContent = `Aktivni period: ${currentMonthText()}`;
-    renderChecklist(); renderKeywords(); renderReport(); renderNotes();
-  }
-
-  el('resetMonthBtn').onclick = () => el('resetModal').classList.add('show');
-  el('cancelReset').onclick = () => el('resetModal').classList.remove('show');
-  el('confirmReset').onclick = () => { el('resetModal').classList.remove('show'); resetMonth(); };
-
-  renderTabs();
-  initRender();
-})();
-</script>
-</body>
-</html>
+ codex/create-interactive-seo-tracking-system-8wf0or
+    
